@@ -1,0 +1,322 @@
+body {
+	padding-top: 54px;
+	background-color: #222;
+}
+@media (min-width: 992px) {
+	body {
+		padding-top: 56px;
+	}
+}
+.cat .list-group-item {
+    padding-left: 30px;
+}
+.cat3 .list-group-item {
+    padding-left: 40px;
+}
+.cat .list-group-item:first-child {
+    border-radius: 0px;
+}
+.cat .list-group-item:last-child {
+    border-bottom: 0 none;
+    border-radius: 0px;
+}
+.list-group .bg-primary a{
+    color: #fff;
+}
+#sidebar .list-group  a[aria-expanded=true] i {
+    transform: rotate(180deg) translateZ(0px);
+    transition: transform 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
+}
+.fa-phone {
+    transform: rotate(90deg);
+}
+.image {
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+	line-height: 240px;
+}
+.carousel-inner .image {
+    line-height: 100%;
+}
+.image img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+.icon-action {
+    float: right;
+    font-size: 80%;
+    margin-top: 5px;
+}
+.thumbnail {
+    max-height: 70px;
+    min-height: 70px;
+}
+.img-thumbnail {
+    min-width: 100px;
+}
+.product .carousel{
+    min-height: 320px;
+}
+.label-rating {
+    padding: 0px 7px;
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle
+}
+.stars-simple {
+    margin-bottom: 7px
+}
+.stars-simple i {
+    color: orange
+}
+.stars-simple small {
+    color: #999;
+    margin-left: 5px
+}
+.rating-stars {
+    display: inline-block;
+    vertical-align: middle;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    line-height: 1;
+    white-space: nowrap;
+    clear: both
+}
+.rating-stars i {
+    font-size: 14px;
+    color: #ccc;
+    display: inline
+}
+.rating-stars li {
+    display: block;
+    text-overflow: clip;
+    white-space: nowrap;
+    z-index: 1
+}
+.rating-stars li.stars-active {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden
+}
+.rating-stars li.stars-active i {
+    color: orange
+}
+.card-product .price-old {
+    color: #999;
+}
+.card-product .image {
+    min-height: 250px;
+}
+.img-thumbnail:hover {
+    border: 1px solid #007bff;
+}
+.notify-badge{
+    font-size: 1rem;
+    line-height: 1rem;
+    left: 1rem;
+}
+.icon-focus {
+    color: #fff;
+    font-family: "MobiriseIcons";
+    font-size: 3rem;
+    left: calc(50% - 24px);
+    opacity: 0;
+    position: absolute;
+    top: calc(50% - 32px);
+    transition: opacity 0.2s ease-in-out 0s;
+    z-index: 5;
+}
+.carousel-inner .carousel-item > a:hover .icon-focus{
+    opacity: 1;
+}
+.carousel-inner .carousel-item > a::before {
+    background: rgba(0, 0, 0, 0) linear-gradient(to left, #293036, #45505b) repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity 0.2s ease-in-out 0s;
+    width: 100%;
+}
+.carousel-inner .carousel-item > a:hover::before {
+    opacity: 0.9;
+}
+#back-to-top {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background: #375a7f;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+}
+#back-to-top i{
+    font-size: 20px;
+}    
+#back-to-top:hover {
+    background: #2b4764;
+}
+#back-to-top.show {
+    opacity: 1;
+}
+.icons
+{
+	position: absolute !important;
+	line-height: normal;
+	margin: 5px 0 0 10px;
+	width: 74px;
+}
+.icons .badge
+{
+	margin: 5px 0 0 0;
+}
+.btn span.fa-check {    			
+	opacity: 0;				
+}
+.btn.active span.fa-check {				
+	opacity: 1;
+	color: #fff;
+}
+.btn.white{
+	border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.btn.white.active span.fa-check {				
+	opacity: 1;
+	color: #000;
+}
+[data-toggle="buttons"] > .btn > input[type="radio"], [data-toggle="buttons"] > .btn > input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+.products .product .image{
+	position:relative;
+	height: 200px;
+	line-height: 200px;
+	vertical-align: middle;
+}
+.products .product .image img{
+	vertical-align:middle;
+}
+.quick_view{
+	position:absolute;
+	top:20%;
+	left:50%;
+	transform: translate(-50%, 0);
+	line-height: 1.5;
+	padding: 0.5rem 0.5rem;
+	border-radius:5px;
+	background: #375a7f;
+	opacity: 0.8;
+	cursor:pointer;
+	border: 1px solid #375a7f;
+	color:#fff;
+	display:none;
+}
+.list .quick_view{
+	margin-top: 54px;
+}
+.quick_view a{
+	color: #fff;
+	text-decoration: none;
+}
+.quick_view:hover{
+	background-color: #2b4764;
+	border-color: #2b4764;
+}
+#qvw{
+	display:none;
+	width:1000px;
+}
+.fancybox-slide--html .fancybox-content {
+	width  : 1000px;
+}
+.secret_number {
+    border: 1px solid #222;
+	background-color: #fff;
+    border-radius: 4px;
+    height: 39px;
+    padding: 0 10px;
+    display: inline-block;
+    position: relative;
+    color: #444;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+    line-height: 39px;
+	-moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+body.offcanvas-active{
+	overflow:hidden;
+}
+.offcanvas-header{ display:none; }
+.screen-overlay {
+	width:0%;
+	height: 100%;
+	z-index: 30;
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity:0;
+	visibility:hidden;
+	background-color: rgba(34, 34, 34, 0.6);
+	transition:opacity .2s linear, visibility .1s, width 1s ease-in;
+}
+.screen-overlay.show {
+	transition:opacity .5s ease, width 0s;
+	opacity:1;
+	width:100%;
+	visibility:visible;
+}
+@media all and (max-width:992px) { 
+	.offcanvas-header{ display:block; }
+	.mobile-offcanvas{
+		visibility: hidden;
+		transform:translateX(-100%);
+		border-radius:0; 
+		display:block;
+		position: fixed;
+		top: 0; left:0;
+		height: 100%;
+		z-index: 1200;
+		width:80%;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		transition: visibility .2s ease-in-out, transform .2s ease-in-out;
+	}
+	.mobile-offcanvas.show{
+		visibility: visible;
+		transform: translateX(0);
+	}
+}
+.fancybox-content {
+    background: #222;
+}
+.fancybox-bg {
+    background: #000;
+}
+.navbar {
+    padding: 0.5rem 1rem;
+}

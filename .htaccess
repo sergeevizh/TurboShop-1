@@ -1,0 +1,103 @@
+AddDefaultCharset UTF-8
+ErrorDocument 404 /404
+ErrorDocument 401 /password.php
+RewriteEngine on
+
+# Редирект на HTTPS:
+#RewriteCond %{HTTPS} =off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#!!!Внимание, с редиректом вход будет обязательно со слешем в конце /turbo/
+
+# Редирект С www на БЕЗ www:
+#RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Редирект с одного домена на другой:
+#RewriteCond %{HTTP_HOST} old.com
+#RewriteRule (.*) http://new.com/$1 [R=301,L]
+
+# 301 Редирект страниц:
+#RewriteRule ^category/old-page.html$ category/new-page [R=301,NC,L]
+
+# Админка теперь по адресу /turbo
+RewriteRule	^admin/?$  turbo [L]
+
+# Каталог товаров
+RewriteRule ^catalog/([^/]+)/?$	index.php?module=ProductsView&category=$1 [L,QSA]
+RewriteRule ^catalog/([^/]+)/([^/]+)/?$	index.php?module=ProductsView&category=$1&brand=$2 [L,QSA]
+
+RewriteRule ^products/([^/]+)/?$	index.php?module=ProductView&product_url=$1 [L,QSA]
+RewriteRule ^products/?$	index.php?module=ProductsView [L,QSA]
+
+RewriteRule ^brands/([^/]+)/?$	index.php?module=ProductsView&brand=$1 [L,QSA]
+RewriteRule ^brands/([^/]+)/page_([^/]+)/?$	index.php?module=ProductsView&brand=$1&page=$2 [L,QSA]
+RewriteRule ^brands?$	index.php?module=BrandsView [L,QSA]
+
+# Поиск товаров
+RewriteRule ^search/([^/]+)/?$	index.php?module=ProductsView&keyword=$1 [L,QSA]
+RewriteRule ^search/?$	index.php?module=ProductsView [L,QSA]
+
+# Блог
+RewriteRule ^blog/([^/]+)/?$	index.php?module=BlogView&url=$1 [L,QSA]
+RewriteRule ^blog/?$	index.php?module=BlogView [L,QSA]
+
+# Статьи
+RewriteRule ^article/([^/]+)/?$	index.php?module=ArticlesView&article_url=$1 [L,QSA]
+RewriteRule ^articles/([^/]+)/?$	index.php?module=ArticlesView&category=$1 [L,QSA]
+RewriteRule ^articles/?$	index.php?module=ArticlesView [L,QSA]
+
+# Проекты
+RewriteRule ^project/([^/]+)/?$	index.php?module=ProjectsView&project_url=$1 [L,QSA]
+RewriteRule ^projects/([^/]+)/?$	index.php?module=ProjectsView&category=$1 [L,QSA]
+RewriteRule ^projects/?$	index.php?module=ProjectsView [L,QSA]
+
+# Сравнение товаров
+RewriteRule ^compare/?$	index.php?module=CompareView [L]
+RewriteRule ^compare/([^/]+)/?$	index.php?module=CompareView&product_url=$1 [L]
+RewriteRule ^compare/remove/([^/]+)/?$	index.php?module=CompareView&remove_product_url=$1 [L]
+
+# Список избранного
+RewriteRule ^wishlist/?$	index.php?module=WishlistView [L]
+RewriteRule ^wishlist/([^/]+)/?$	index.php?module=WishlistView&product_url=$1 [L]
+RewriteRule ^wishlist/remove/([^/]+)/?$	index.php?module=WishlistView&remove_product_url=$1 [L]
+
+# Корзина и заказы
+RewriteRule ^cart/?$	index.php?module=CartView   [L,QSA]
+RewriteRule ^cart/([^/]+)/?$	index.php?module=CartView&add_variant=$1  [L,QSA]
+RewriteRule ^cart/remove/([^/]+)/?$	index.php?module=CartView&delete_variant=$1  [L,QSA]
+RewriteRule ^order/([^/]+)/?$	index.php?module=OrderView&url=$1  [L,QSA]
+RewriteRule ^order/?$	index.php?module=OrderView  [L,QSA]
+
+# Для пользователей
+RewriteRule ^user/login/?$	index.php?module=LoginView  [L,QSA]
+RewriteRule ^user/register/?$	index.php?module=RegisterView  [L,QSA]
+RewriteRule ^user/logout/?$	index.php?module=LoginView&action=logout  [L,QSA]
+RewriteRule ^user/password_remind/?$	index.php?module=LoginView&action=password_remind  [L,QSA]
+RewriteRule ^user/password_remind/([0-9a-z]+)/?$	index.php?module=LoginView&action=password_remind&code=$1  [L,QSA]
+RewriteRule ^user/?$	index.php?module=UserView  [L,QSA]
+
+# Google sitemap
+RewriteRule ^sitemap.xml?$	sitemap.php  [L,QSA]
+
+# XML
+RewriteRule ^export.xml?$	export.php  [L,QSA]
+
+# feedback
+RewriteRule ^contact/?$	index.php?module=FeedbackView  [L,QSA]
+
+# Статические страницы
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]*)/?$	index.php?module=PageView&page_url=$1 [L,QSA]
+RewriteRule ^/?$	index.php?module=MainView&page_url= [L,QSA]
+
+# Ресайз картинок на лету
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^files/posts/preview/(.+) resize/resize.php?file=$1&is_post=1&token=%{QUERY_STRING}
+RewriteRule ^files/brands/preview/(.+) resize/resize.php?file=$1&is_brands=1&token=%{QUERY_STRING}
+RewriteRule ^files/slides/preview/(.+) resize/resize.php?file=$1&is_banners=1&token=%{QUERY_STRING}
+RewriteRule ^files/categories/preview/(.+) resize/resize.php?file=$1&is_category=1&token=%{QUERY_STRING}
+RewriteRule ^files/products/(.+) resize/resize.php?file=$1&token=%{QUERY_STRING}
+#RewriteCond %{THE_REQUEST} ^GET\ (.*)files/products/(.*)\?([A-z0-9]*) 
+#RewriteRule ^files/products/(.+) resize/resize.php?file=%2&token=%3 [L,NE]
